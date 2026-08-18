@@ -77,13 +77,19 @@ export default function Home() {
     </nav>
 
     <section id="home" className="hero section-wrap">
+      <video className="hero-video" autoPlay muted loop playsInline preload="auto" aria-hidden="true">
+        <source src="/monnavi-hero.mp4" type="video/mp4" />
+      </video>
+      <div className="hero-video-overlay" aria-hidden="true" />
       <div className="hero-grid" aria-hidden="true"><span/><span/><span/><span/><span/><span/></div>
-      <div className="orb orb-one"/><div className="orb orb-two"/>
-      <div className="eyebrow reveal">Software · IA · Automatización · IoT</div>
-      <h1 className="hero-title reveal">{t("Tecnología que hace que el trabajo", "Technology that makes")}<br/><i>{t("avance.", "work move.")}</i></h1>
-      <div className="hero-bottom reveal">
-        <p>{t("MONNAVI convierte los retos operativos en sistemas claros, conectados y hechos para el ritmo de tu empresa.", "MONNAVI turns operational challenges into systems that are clear, connected, and built for the way your business moves.")}</p>
-        <div className="hero-actions"><a href="#contact" className="button button-light">{t("Inicia una conversación", "Start a conversation")} <Arrow /></a><a href="#solutions" className="text-link">{t("Explora nuestro trabajo", "Explore our work")} <Arrow /></a></div>
+      <div className="hero-content">
+        <div className="hero-brand reveal">MONNAVI</div>
+        <div className="eyebrow hero-eyebrow reveal"><span className="eyebrow-item">Software</span><span className="eyebrow-divider">·</span><span className="eyebrow-item">IA</span><span className="eyebrow-divider">·</span><span className="eyebrow-item">Automatización</span><span className="eyebrow-divider">·</span><span className="eyebrow-item">IoT</span></div>
+        <h1 className="hero-title reveal">{t("Tecnología que hace que el trabajo", "Technology that makes")}<br/><i>{t("avance.", "work move.")}</i></h1>
+        <div className="hero-bottom reveal">
+          <p>{t("MONNAVI convierte los retos operativos en sistemas claros, conectados y hechos para el ritmo de tu empresa.", "MONNAVI turns operational challenges into systems that are clear, connected, and built for the way your business moves.")}</p>
+          <div className="hero-actions"><a href="#contact" className="button button-light">{t("Inicia una conversación", "Start a conversation")} <Arrow /></a><a href="#solutions" className="text-link">{t("Explora nuestro trabajo", "Explore our work")} <Arrow /></a></div>
+        </div>
       </div>
       <div className="hero-marker"><span>{t("Explora hacia abajo", "Scroll to explore")}</span><b/></div>
       <div className="hero-signal" aria-label="Live systems illustration"><span className="signal-label">SYSTEMS / 01</span><span className="signal-num">01</span><span className="signal-line"/><span className="signal-node"/></div>
@@ -117,7 +123,3 @@ export default function Home() {
     <section id="about" className="about section-wrap"><p className="section-kicker">07 / {t("SOBRE MONNAVI", "ABOUT MONNAVI")}</p><div><h2>{t("La tecnología debe resolver problemas,", "Technology should solve problems,")} <em>{t("no crear complejidad.", "not create complexity.")}</em></h2><p>{t("MONNAVI existe para cerrar la brecha entre las operaciones tradicionales y la tecnología moderna útil. Construimos con precisión, nos mantenemos cerca de la necesidad práctica y cuidamos lo que pasa después del lanzamiento.", "MONNAVI exists to close the gap between traditional operations and useful modern technology. We build with precision, stay close to the practical need, and care about what happens after launch.")}</p></div></section>
 
     <section id="contact" className="contact section-wrap"><div className="contact-copy"><p className="section-kicker">08 / {t("CONTACTO", "GET IN TOUCH")}</p><h2>{t("¿Tienes un problema", "Have a problem")}<br/><em>{t("que vale la pena resolver?", "worth solving?")}</em></h2><p>{t("Cuéntanos qué está frenando a tu empresa. Exploraremos cómo la tecnología puede mejorarlo.", "Tell us what is slowing your business down. We’ll explore how technology can make it better.")}</p><a href="mailto:monnavitech@gmail.com" className="email">monnavitech@gmail.com <Arrow /></a><a className="whatsapp" href="https://wa.me/526371000000" target="_blank" rel="noreferrer">{t("Escríbenos por WhatsApp", "WhatsApp us")} <Arrow /></a></div><form onSubmit={submit}><label>{t("Tu nombre", "Your name")}<input required placeholder={t("Nombre", "Name")} /></label><label>{t("Email de trabajo", "Work email")}<input type="email" required placeholder="you@company.com" /></label><label>{t("¿Qué estás buscando mejorar?", "What are you looking to improve?")}<textarea required placeholder={t("Un poco de contexto ayuda mucho.", "A little context goes a long way.")} rows={4}/></label><button className="button button-light" type="submit">{sent ? t("Mensaje recibido", "Message received") : t("Enviar consulta", "Send inquiry")} <Arrow /></button>{sent && <p className="form-note">{t("Gracias. Te contactaremos pronto.", "Thank you. We’ll be in touch shortly.")}</p>}</form></section>
-
-    <footer><div className="footer-top"><a className="brand" href="#home">MONNAVI<span className="brand-dot">.</span></a><p>{t("Sistemas tecnológicos para", "Technology systems for")}<br/>{t("empresas en movimiento.", "businesses in motion.")}</p><a href="#contact" className="footer-cta">{t("Hablemos", "Let's talk")} <Arrow /></a></div><div className="footer-bottom"><span>© {new Date().getFullYear()} MONNAVI</span><div><a href="#solutions">{t("Soluciones", "Solutions")}</a><a href="#industries">{t("Industrias", "Industries")}</a><a href="#about">{t("Nosotros", "About")}</a><a href="mailto:monnavitech@gmail.com">Email</a><a href="#">Instagram</a><a href="#">Facebook</a></div><span>Caborca, Sonora · {t("En todas partes", "Everywhere")}</span></div></footer>
-  </main>;
-}
