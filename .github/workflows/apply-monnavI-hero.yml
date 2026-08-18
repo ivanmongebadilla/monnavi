@@ -1,0 +1,92 @@
+name: Apply MONNAVI hero design
+
+on:
+  push:
+    branches:
+      - hero-video-monnavI
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Update MONNAVI hero
+        shell: python
+        run: |
+          from pathlib import Path
+
+          page = Path('app/page.tsx')
+          text = page.read_text(encoding='utf-8')
+          start = text.index('    <section id="home" className="hero section-wrap">')
+          end = text.index('    </section>', start) + len('    </section>')
+
+          hero = '''    <section id="home" className="hero hero-video-hero section-wrap">
+      <div className="hero-media" aria-hidden="true">
+        <video autoPlay muted loop playsInline preload="metadata">
+          <source src="/monnavi-hero.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div className="hero-video-overlay" aria-hidden="true" />
+      <div className="hero-content">
+        <div className="hero-logo" aria-label="MONNAVI">MONNAVI<span>.</span></div>
+        <div className="hero-pillars" aria-label={t("Software, inteligencia artificial, automatización e IoT", "Software, artificial intelligence, automation and IoT")}>
+          <span>{t("Software", "Software")}</span><b>·</b>
+          <span>{t("IA", "AI")}</span><b>·</b>
+          <span>{t("Automatización", "Automation")}</span><b>·</b>
+          <span>IoT</span>
+        </div>
+        <h1 className="hero-title reveal">{t("Tecnología que hace que el trabajo", "Technology that makes")}<br/><i>{t("avance.", "work move.")}</i></h1>
+        <div className="hero-bottom reveal">
+          <p>{t("MONNAVI convierte los retos operativos en sistemas claros, conectados y hechos para el ritmo de tu empresa.", "MONNAVI turns operational challenges into systems that are clear, connected, and built for the way your business moves.")}</p>
+          <div className="hero-actions"><a href="#contact" className="button button-light">{t("Inicia una conversación", "Start a conversation")} <Arrow /></a><a href="#solutions" className="text-link">{t("Explora nuestro trabajo", "Explore our work")} <Arrow /></a></div>
+        </div>
+      </div>
+      <div className="hero-marker"><span>{t("Explora hacia abajo", "Scroll to explore")}</span><b/></div>
+      <div className="hero-signal" aria-label="Live systems illustration"><span className="signal-label">SYSTEMS / 01</span><span className="signal-num">01</span><span className="signal-line"/><span className="signal-node"/></div>
+    </section>'''
+          page.write_text(text[:start] + hero + text[end:], encoding='utf-8')
+
+          css = Path('app/globals.css')
+          css_text = css.read_text(encoding='utf-8')
+          css_text = css_text.replace("@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');", "@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');")
+          styles = '''
+
+/* MONNAVI video hero */
+.hero-video-hero{min-height:760px;height:100vh;max-height:960px;padding-top:82px;padding-bottom:80px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;isolation:isolate;background:#050505}
+.hero-video-hero .hero-grid,.hero-video-hero>.orb{display:none}
+.hero-media,.hero-video-overlay{position:absolute;inset:0;pointer-events:none}
+.hero-media{z-index:-3;overflow:hidden}
+.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.18) 0%,rgba(0,0,0,.1) 45%,#070707 100%)}
+.hero-media video{width:100%;height:100%;display:block;object-fit:cover;object-position:center;filter:brightness(.72) saturate(.72) contrast(1.04);transform:scale(1.035)}
+.hero-video-overlay{z-index:-2;background:radial-gradient(ellipse at center 48%,rgba(0,0,0,.03) 0%,rgba(0,0,0,.25) 52%,rgba(0,0,0,.78) 100%),linear-gradient(to bottom,rgba(0,0,0,.25) 0%,transparent 28%,transparent 62%,#070707 100%)}
+.hero-content{width:min(1120px,100%);margin:0 auto;position:relative;z-index:1;text-align:center;display:flex;flex-direction:column;align-items:center}
+.hero-logo{font-family:Inter,Arial,sans-serif;font-size:clamp(62px,10.5vw,154px);line-height:.82;font-weight:500;letter-spacing:.095em;padding-left:.095em;color:#f7f7f5;text-shadow:0 0 32px rgba(255,255,255,.08)}
+.hero-logo span{color:#b8c5bb}
+.hero-pillars{margin-top:31px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:15px;color:#ededeb;font-family:Inter,Arial,sans-serif;font-size:clamp(10px,1.05vw,14px);font-weight:500;letter-spacing:.31em;text-transform:uppercase;padding-left:.31em}
+.hero-pillars span{opacity:0;transform:translateY(8px);animation:hero-pillar-in .7s cubic-bezier(.22,1,.36,1) forwards}
+.hero-pillars span:nth-of-type(1){animation-delay:.25s}.hero-pillars span:nth-of-type(2){animation-delay:.65s}.hero-pillars span:nth-of-type(3){animation-delay:1.05s}.hero-pillars span:nth-of-type(4){animation-delay:1.45s}.hero-pillars b{color:#aeb8b0;font-weight:400;opacity:.7}
+@keyframes hero-pillar-in{to{opacity:1;transform:translateY(0)}}
+.hero-video-hero .hero-title{margin:62px 0 31px;color:#f5f5f0;font-family:Inter,Arial,sans-serif;font-size:clamp(34px,4.5vw,70px);line-height:1.02;font-weight:500;letter-spacing:-.055em;text-shadow:0 3px 24px rgba(0,0,0,.35)}
+.hero-video-hero .hero-title i{font-family:Inter,Arial,sans-serif;font-style:italic;font-weight:400;letter-spacing:-.055em}
+.hero-video-hero .hero-bottom{width:min(760px,100%);display:flex;flex-direction:column;align-items:center;gap:28px}
+.hero-video-hero .hero-bottom p{max-width:560px;color:#c9c9c5;line-height:1.7;font-size:13px;text-shadow:0 2px 18px rgba(0,0,0,.6)}
+.hero-video-hero .hero-actions{justify-content:center}.hero-video-hero .hero-marker{bottom:34px}.hero-video-hero .hero-signal{bottom:31px}
+@media(max-width:760px){.hero-video-hero{min-height:720px;height:100svh;padding:105px 22px 95px}.hero-logo{font-size:clamp(52px,15vw,78px);letter-spacing:.075em;padding-left:.075em}.hero-pillars{margin-top:24px;gap:9px;font-size:9px;letter-spacing:.18em;padding-left:.18em}.hero-video-hero .hero-title{margin:49px 0 27px;font-size:37px}.hero-video-hero .hero-bottom p{font-size:12px}.hero-video-hero .hero-actions{flex-wrap:wrap;gap:18px}.hero-video-hero .hero-signal{display:none}}
+'''
+          if '/* MONNAVI video hero */' not in css_text:
+              css_text += styles
+          css.write_text(css_text, encoding='utf-8')
+
+      - name: Commit hero changes
+        run: |
+          git config user.name "MONNAVI Bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app/page.tsx app/globals.css
+          git diff --cached --quiet && exit 0
+          git commit -m "Add video-backed MONNAVI hero"
+          git push
