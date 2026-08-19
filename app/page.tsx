@@ -77,42 +77,24 @@ export default function Home() {
     </nav>
 
     <section id="home" className="hero section-wrap">
-      <video className="hero-video" autoPlay muted loop playsInline preload="auto" aria-hidden="true">
-        <source src="/monnavi-hero.mp4" type="video/mp4" />
-      </video>
+      <video className="hero-video" autoPlay muted loop playsInline preload="auto" aria-hidden="true"><source src="/monnavi-hero.mp4" type="video/mp4" /></video>
       <div className="hero-video-overlay" aria-hidden="true" />
       <div className="hero-grid" aria-hidden="true"><span/><span/><span/><span/><span/><span/></div>
       <div className="hero-content">
         <div className="hero-brand reveal">MONNAVI</div>
         <div className="eyebrow hero-eyebrow reveal"><span className="eyebrow-item">Software</span><span className="eyebrow-divider">·</span><span className="eyebrow-item">IA</span><span className="eyebrow-divider">·</span><span className="eyebrow-item">Automatización</span><span className="eyebrow-divider">·</span><span className="eyebrow-item">IoT</span></div>
         <h1 className="hero-title reveal">{t("Tecnología que hace que el trabajo", "Technology that makes")}<br/><i>{t("avance.", "work move.")}</i></h1>
-        <div className="hero-bottom reveal">
-          <p>{t("MONNAVI convierte los retos operativos en sistemas claros, conectados y hechos para el ritmo de tu empresa.", "MONNAVI turns operational challenges into systems that are clear, connected, and built for the way your business moves.")}</p>
-          <div className="hero-actions"><a href="#contact" className="button button-light">{t("Inicia una conversación", "Start a conversation")} <Arrow /></a><a href="#solutions" className="text-link">{t("Explora nuestro trabajo", "Explore our work")} <Arrow /></a></div>
-        </div>
+        <div className="hero-bottom reveal"><p>{t("MONNAVI convierte los retos operativos en sistemas claros, conectados y hechos para el ritmo de tu empresa.", "MONNAVI turns operational challenges into systems that are clear, connected, and built for the way your business moves.")}</p><div className="hero-actions"><a href="#contact" className="button button-light">{t("Inicia una conversación", "Start a conversation")} <Arrow /></a><a href="#solutions" className="text-link">{t("Explora nuestro trabajo", "Explore our work")} <Arrow /></a></div></div>
       </div>
       <div className="hero-marker"><span>{t("Explora hacia abajo", "Scroll to explore")}</span><b/></div>
       <div className="hero-signal" aria-label="Live systems illustration"><span className="signal-label">SYSTEMS / 01</span><span className="signal-num">01</span><span className="signal-line"/><span className="signal-node"/></div>
     </section>
 
-    <section className="intro section-wrap">
-      <p className="section-kicker">01 / {t("LO QUE HACEMOS", "WHAT WE DO")}</p>
-      <div className="intro-copy"><h2>{t("Las operaciones complejas", "Complex operations")}<br/>{t("merecen ", "deserve ")}<em>{t("sistemas claros.", "clear systems.")}</em></h2><p>{t("Combinamos las disciplinas tecnológicas correctas alrededor del problema real, no al revés. El resultado es tecnología útil que se gana su lugar en tu empresa.", "We combine the right technology disciplines around the real problem—not the other way around. The result is useful technology that earns its place in your business.")}</p></div>
-      <div className="capability-grid">
-        {localCapabilities.map(([number, title, text]) => <article className="capability" key={title}><span>{number}</span><h3>{title}</h3><p>{text}</p><Plus /></article>)}
-      </div>
-    </section>
+    <section className="intro section-wrap"><p className="section-kicker">01 / {t("LO QUE HACEMOS", "WHAT WE DO")}</p><div className="intro-copy"><h2>{t("Las operaciones complejas", "Complex operations")}<br/>{t("merecen ", "deserve ")}<em>{t("sistemas claros.", "clear systems.")}</em></h2><p>{t("Combinamos las disciplinas tecnológicas correctas alrededor del problema real, no al revés. El resultado es tecnología útil que se gana su lugar en tu empresa.", "We combine the right technology disciplines around the real problem—not the other way around. The result is useful technology that earns its place in your business.")}</p></div><div className="capability-grid">{localCapabilities.map(([number, title, text]) => <article className="capability" key={title}><span>{number}</span><h3>{title}</h3><p>{text}</p><Plus /></article>)}</div></section>
 
-    <section id="solutions" className="solutions section-wrap">
-      <div className="section-heading"><p className="section-kicker">02 / {t("SOLUCIONES", "SOLUTIONS")}</p><h2>{t("Construido alrededor del", "Built around the")}<br/><em>{t("trabajo que importa.", "work that matters.")}</em></h2><p>{t("Desde un flujo con fricción hasta un modelo operativo conectado, hacemos que la tecnología sea práctica.", "From a single high-friction workflow to a connected operating model, we make technology practical.")}</p></div>
-      <div className="solution-list">{localSolutions.map(([number, label, title, text]) => <article className="solution-row" key={title}><div><span>{number}</span><small>{label}</small></div><h3>{title}</h3><p>{text}</p><a href="#contact" aria-label={`${t("Hablar sobre", "Discuss")} ${title}`}><Arrow /></a></article>)}</div>
-    </section>
+    <section id="solutions" className="solutions section-wrap"><div className="section-heading"><p className="section-kicker">02 / {t("SOLUCIONES", "SOLUTIONS")}</p><h2>{t("Construido alrededor del", "Built around the")}<br/><em>{t("trabajo que importa.", "work that matters.")}</em></h2><p>{t("Desde un flujo con fricción hasta un modelo operativo conectado, hacemos que la tecnología sea práctica.", "From a single high-friction workflow to a connected operating model, we make technology practical.")}</p></div><div className="solution-list">{localSolutions.map(([number, label, title, text]) => <article className="solution-row" key={title}><div><span>{number}</span><small>{label}</small></div><h3>{title}</h3><p>{text}</p><a href="#contact" aria-label={`${t("Hablar sobre", "Discuss")} ${title}`}><Arrow /></a></article>)}</div></section>
 
-    <section id="industries" className="industries section-wrap">
-      <p className="section-kicker">03 / {t("INDUSTRIAS", "INDUSTRIES")}</p>
-      <div className="industries-title"><h2>{t("Cada operación tiene", "Every operation has")}<br/>{t("una ", "a different ")}<em>{t("realidad distinta.", "reality.")}</em></h2><p>{t("Nuestro punto de partida siempre es el mismo: entender cómo funcionan las cosas hoy y mejorar lo que más importa.", "Our starting point is always the same: understand how things work today, then improve what matters most.")}</p></div>
-      <div className="industries-grid">{localIndustries.map(([title, text], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
-    </section>
+    <section id="industries" className="industries section-wrap"><p className="section-kicker">03 / {t("INDUSTRIAS", "INDUSTRIES")}</p><div className="industries-title"><h2>{t("Cada operación tiene", "Every operation has")}<br/>{t("una ", "a different ")}<em>{t("realidad distinta.", "reality.")}</em></h2><p>{t("Nuestro punto de partida siempre es el mismo: entender cómo funcionan las cosas hoy y mejorar lo que más importa.", "Our starting point is always the same: understand how things work today, then improve what matters most.")}</p></div><div className="industries-grid">{localIndustries.map(([title, text], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
 
     <section className="process section-wrap"><p className="section-kicker">04 / {t("CÓMO TRABAJAMOS", "HOW WE WORK")}</p><div className="process-head"><h2>{t("Empezamos por el", "Start with the")}<br/><em>{t("problema.", "problem.")}</em></h2><p>{t("No hay un paquete predefinido que vender. Trabajamos desde la necesidad operativa, con las personas más cercanas a ella.", "There is no predefined package to sell. We work from the operational need, with the people closest to it.")}</p></div><ol>{(es ? ["Descubrir", "Diseñar", "Construir", "Integrar", "Mejorar"] : ["Discover", "Design", "Build", "Integrate", "Improve"]).map((item, i) => <li key={item}><span>0{i + 1}</span><h3>{item}</h3><i>{i === 4 ? "↗" : "→"}</i></li>)}</ol></section>
 
@@ -123,3 +105,5 @@ export default function Home() {
     <section id="about" className="about section-wrap"><p className="section-kicker">07 / {t("SOBRE MONNAVI", "ABOUT MONNAVI")}</p><div><h2>{t("La tecnología debe resolver problemas,", "Technology should solve problems,")} <em>{t("no crear complejidad.", "not create complexity.")}</em></h2><p>{t("MONNAVI existe para cerrar la brecha entre las operaciones tradicionales y la tecnología moderna útil. Construimos con precisión, nos mantenemos cerca de la necesidad práctica y cuidamos lo que pasa después del lanzamiento.", "MONNAVI exists to close the gap between traditional operations and useful modern technology. We build with precision, stay close to the practical need, and care about what happens after launch.")}</p></div></section>
 
     <section id="contact" className="contact section-wrap"><div className="contact-copy"><p className="section-kicker">08 / {t("CONTACTO", "GET IN TOUCH")}</p><h2>{t("¿Tienes un problema", "Have a problem")}<br/><em>{t("que vale la pena resolver?", "worth solving?")}</em></h2><p>{t("Cuéntanos qué está frenando a tu empresa. Exploraremos cómo la tecnología puede mejorarlo.", "Tell us what is slowing your business down. We’ll explore how technology can make it better.")}</p><a href="mailto:monnavitech@gmail.com" className="email">monnavitech@gmail.com <Arrow /></a><a className="whatsapp" href="https://wa.me/526371000000" target="_blank" rel="noreferrer">{t("Escríbenos por WhatsApp", "WhatsApp us")} <Arrow /></a></div><form onSubmit={submit}><label>{t("Tu nombre", "Your name")}<input required placeholder={t("Nombre", "Name")} /></label><label>{t("Email de trabajo", "Work email")}<input type="email" required placeholder="you@company.com" /></label><label>{t("¿Qué estás buscando mejorar?", "What are you looking to improve?")}<textarea required placeholder={t("Un poco de contexto ayuda mucho.", "A little context goes a long way.")} rows={4}/></label><button className="button button-light" type="submit">{sent ? t("Mensaje recibido", "Message received") : t("Enviar consulta", "Send inquiry")} <Arrow /></button>{sent && <p className="form-note">{t("Gracias. Te contactaremos pronto.", "Thank you. We’ll be in touch shortly.")}</p>}</form></section>
+  </main>;
+}
