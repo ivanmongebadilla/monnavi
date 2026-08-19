@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 
 const Arrow = () => <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 10h13M11 4l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>;
 const Plus = () => <span className="plus">+</span>;
@@ -39,6 +39,36 @@ const projects = [
 export default function Home() {
   const [sent, setSent] = useState(false);
   const [language, setLanguage] = useState<"es" | "en">("es");
+
+  const videoRef = useRef<HTMLVideoElement>(null);
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleEnded = () => {
+      const nextSrc =
+        video.dataset.direction === "forward"
+          ? "/monnavi-hero-reverse.mp4"
+          : "/monnavi-hero.mp4";
+
+      video.dataset.direction =
+        video.dataset.direction === "forward" ? "reverse" : "forward";
+
+      video.src = nextSrc;
+      video.currentTime = 0;
+      video.play().catch(() => {});
+    };
+
+    video.dataset.direction = "forward";
+    video.addEventListener("ended", handleEnded);
+
+    video.play().catch(() => {});
+
+    return () => {
+      video.removeEventListener("ended", handleEnded);
+    };
+  }, []);
+
   const es = language === "es";
   const t = (spanish: string, english: string) => es ? spanish : english;
   const localCapabilities = es ? [
@@ -77,13 +107,44 @@ export default function Home() {
     </nav>
 
     <section id="home" className="hero section-wrap">
-      <video className="hero-video" autoPlay muted loop playsInline preload="auto" aria-hidden="true"><source src="/monnavi-hero.mp4" type="video/mp4" /></video>
+      {/* <video className="hero-video" autoPlay muted loop playsInline preload="auto" aria-hidden="true"><source src="/monnavi-hero.mp4" type="video/mp4" /></video> */}
+      <video
+        ref={videoRef}
+        className="hero-video"
+        autoPlay
+        muted
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+      >
+        <source src="/monnavi-hero.mp4" type="video/mp4" />
+      </video>
       <div className="hero-video-overlay" aria-hidden="true" />
       <div className="hero-grid" aria-hidden="true"><span/><span/><span/><span/><span/><span/></div>
       <div className="hero-content">
-        <div className="hero-brand reveal">MONNAVI</div>
+        {/* <div className="hero-brand reveal">MONNAVI</div>
         <div className="eyebrow hero-eyebrow reveal"><span className="eyebrow-item">Software</span><span className="eyebrow-divider">·</span><span className="eyebrow-item">IA</span><span className="eyebrow-divider">·</span><span className="eyebrow-item">Automatización</span><span className="eyebrow-divider">·</span><span className="eyebrow-item">IoT</span></div>
-        <h1 className="hero-title reveal">{t("Tecnología que hace que el trabajo", "Technology that makes")}<br/><i>{t("avance.", "work move.")}</i></h1>
+        <h1 className="hero-title reveal">{t("Tecnología que hace que el trabajo", "Technology that makes")}<br/><i>{t("avance.", "work move.")}</i></h1> */}
+        
+        <div className="hero-brand hero-reveal hero-reveal-1">
+          MONNAVI
+        </div>
+
+        <div className="eyebrow hero-eyebrow">
+          <span className="tech-word tech-word-1">Software</span>
+          <span className="eyebrow-divider">·</span>
+          <span className="tech-word tech-word-2">IA</span>
+          <span className="eyebrow-divider">·</span>
+          <span className="tech-word tech-word-3">Automatización</span>
+          <span className="eyebrow-divider">·</span>
+          <span className="tech-word tech-word-4">IoT</span>
+        </div>
+
+        <h1 className="hero-title hero-reveal hero-reveal-9">
+          {t("Tecnología que hace que el trabajo", "Technology that makes")}
+          <br />
+          <i>{t("avance.", "work move.")}</i>
+        </h1>
         <div className="hero-bottom reveal"><p>{t("MONNAVI convierte los retos operativos en sistemas claros, conectados y hechos para el ritmo de tu empresa.", "MONNAVI turns operational challenges into systems that are clear, connected, and built for the way your business moves.")}</p><div className="hero-actions"><a href="#contact" className="button button-light">{t("Inicia una conversación", "Start a conversation")} <Arrow /></a><a href="#solutions" className="text-link">{t("Explora nuestro trabajo", "Explore our work")} <Arrow /></a></div></div>
       </div>
       <div className="hero-marker"><span>{t("Explora hacia abajo", "Scroll to explore")}</span><b/></div>
