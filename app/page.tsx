@@ -72,31 +72,32 @@ export default function Home() {
   const es = language === "es";
   const t = (spanish: string, english: string) => es ? spanish : english;
   const localCapabilities = es ? [
-    ["01", "Software", "Sistemas hechos a la medida de cómo realmente opera tu empresa."],
-    ["02", "Inteligencia artificial", "IA práctica que ayuda a tu equipo a responder, decidir y actuar con mayor confianza."],
-    ["03", "Automatización", "Elimina el trabajo repetitivo y mantén los procesos esenciales avanzando sin cuellos de botella."],
-    ["04", "Operaciones conectadas", "Integra sensores, equipos, datos y personas en una visión operativa confiable."],
-    ["05", "Datos", "Convierte información dispersa en visibilidad, señales útiles y mejores decisiones."],
-    ["06", "Digitalización", "Lleva los flujos de trabajo manuales a herramientas simples que tu equipo sí querrá usar."],
+    ["01", "Software", "Desde una landing page hasta sistemas a la medida que se adaptan a cómo realmente opera tu empresa."],
+    ["02", "Inteligencia artificial", "IA práctica para automatizar tareas, encontrar información y ayudar a tu equipo a responder y decidir mejor."],
+    ["03", "Automatización", "Convierte tareas repetitivas en flujos simples que ahorran tiempo y mantienen el trabajo avanzando."],
+    ["04", "Web & presencia digital", "Sitios web, landing pages y experiencias digitales diseñadas para representar tu negocio y generar oportunidades."],
+    ["05", "Datos", "Dashboards e integraciones que convierten la información de tu negocio en visibilidad y decisiones más claras."],
+    ["06", "IoT & operaciones conectadas", "Conecta sensores, equipos, datos y personas para hacer tus operaciones más medibles y eficientes."],
   ] : capabilities;
   const localSolutions = es ? [
-    ["01", "Opera", "Sistemas empresariales a medida", "Inventario, CRM, mantenimiento, operaciones de campo y los flujos que los conectan."],
-    ["02", "Automatiza", "Flujos inteligentes", "Agentes de IA, documentos, aprobaciones, alertas e integraciones que eliminan trabajo administrativo."],
-    ["03", "Visualiza", "Datos para decidir", "Dashboards y plataformas de datos que hacen visible el estado de tu empresa en un vistazo."],
-    ["04", "Conecta", "Entornos inteligentes", "IoT industrial, riego inteligente, sensores, visión computacional y equipos conectados."],
+    ["01", "Crea", "Presencia digital", "Landing pages, sitios web, catálogos digitales y experiencias online diseñadas para que tu negocio tenga una presencia profesional y convierta visitantes en clientes."],
+    ["02", "Opera", "Sistemas a medida", "Desde herramientas internas hasta CRM, inventario, mantenimiento y plataformas diseñadas alrededor de cómo trabaja tu empresa."],
+    ["03", "Automatiza", "Flujos inteligentes", "Agentes de IA, automatizaciones, documentos, aprobaciones, alertas e integraciones que eliminan trabajo repetitivo."],
+    ["04", "Visualiza", "Datos para decidir", "Dashboards e integraciones que convierten la información de tu negocio en una visión clara de lo que está pasando."],
+    ["05", "Escala", "Operaciones conectadas", "IoT, sensores, visión computacional y sistemas conectados para operaciones que necesitan mayor control y visibilidad."],
   ] : solutions;
   const localIndustries = es ? [
-    ["Agricultura", "Haz que el agua, la actividad de campo y los equipos sean más medibles y manejables."],
-    ["Industria", "Entiende lo que sucede en planta y detecta problemas operativos antes."],
-    ["Comercio", "Conecta clientes, inventario, ventas y servicio en un ritmo diario más claro."],
-    ["Operaciones de campo", "Da a equipos distribuidos la información y las herramientas para trabajar mejor desde cualquier lugar."],
-    ["Hospitalidad", "Simplifica los detalles que hay detrás de una gran experiencia para cada huésped."],
-    ["Servicios profesionales", "Reduce la carga administrativa y deja más tiempo para el trabajo valioso con clientes."],
+    ["Agricultura", "Digitaliza el campo, mide mejor el uso de recursos y conecta la operación con datos que ayudan a decidir."],
+    ["Industria", "Mejora la visibilidad de planta, automatiza procesos y detecta problemas operativos antes."],
+    ["Comercio", "Conecta clientes, ventas, inventario y operaciones para que tu negocio trabaje de forma más ordenada."],
+    ["Operaciones de campo", "Dale a equipos distribuidos las herramientas y la información que necesitan para trabajar mejor desde cualquier lugar."],
+    ["Hospitalidad", "Simplifica la operación detrás de una gran experiencia para tus clientes y huéspedes."],
+    ["Servicios profesionales", "Reduce tareas administrativas y crea herramientas digitales que te permitan dedicar más tiempo a tus clientes."],
   ] : industries;
   const localProjects = es ? [
-    ["Riego inteligente", "Una vista conectada de zonas, sensores y calendarios para conservar recursos y mantener la operación bajo control.", "IoT · Automatización"],
-    ["Asistente empresarial con IA", "Un asistente interno seguro que convierte el conocimiento de tu empresa en respuestas rápidas y fundamentadas.", "IA · Sistemas de conocimiento"],
-    ["Centro de control operativo", "Un dashboard en tiempo real para las métricas, alertas y trabajo abierto que mueve una operación industrial.", "Datos · Integración"],
+    ["Sitio web para negocio", "Una experiencia web moderna diseñada para presentar una marca, explicar sus servicios y convertir visitantes en clientes.", "Web · Diseño · Desarrollo"],
+    ["Automatización con IA", "Un flujo inteligente que procesa información, elimina tareas repetitivas y ayuda al equipo a trabajar con mayor rapidez.", "IA · Automatización"],
+    ["Centro de control operativo", "Un dashboard en tiempo real para las métricas, alertas y trabajo abierto que mueve una operación.", "Datos · Integración"],
   ] : projects;
   function submit(e: FormEvent<HTMLFormElement>) { e.preventDefault(); setSent(true); }
   return <main>
@@ -162,7 +163,13 @@ export default function Home() {
 
     <section id="industries" className="industries section-wrap"><p className="section-kicker">03 / {t("INDUSTRIAS", "INDUSTRIES")}</p><div className="industries-title"><h2>{t("Cada operación tiene", "Every operation has")}<br/>{t("una ", "a different ")}<em>{t("realidad distinta.", "reality.")}</em></h2><p>{t("Nuestro punto de partida siempre es el mismo: entender cómo funcionan las cosas hoy y mejorar lo que más importa.", "Our starting point is always the same: understand how things work today, then improve what matters most.")}</p></div><div className="industries-grid">{localIndustries.map(([title, text], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
 
-    <section className="process section-wrap"><p className="section-kicker">04 / {t("CÓMO TRABAJAMOS", "HOW WE WORK")}</p><div className="process-head"><h2>{t("Empezamos por el", "Start with the")}<br/><em>{t("problema.", "problem.")}</em></h2><p>{t("No hay un paquete predefinido que vender. Trabajamos desde la necesidad operativa, con las personas más cercanas a ella.", "There is no predefined package to sell. We work from the operational need, with the people closest to it.")}</p></div><ol>{(es ? ["Descubrir", "Diseñar", "Construir", "Integrar", "Mejorar"] : ["Discover", "Design", "Build", "Integrate", "Improve"]).map((item, i) => <li key={item}><span>0{i + 1}</span><h3>{item}</h3><i>{i === 4 ? "↗" : "→"}</i></li>)}</ol></section>
+    <section className="process section-wrap">
+      <p className="section-kicker">04 / {t("CÓMO TRABAJAMOS", "HOW WE WORK")}</p>
+      <div className="process-head">
+        <h2>{t("Empezamos por el", "Start with the")}<br/><em>{t("problema.", "problem.")}</em></h2>
+        <p>{t("No hay un paquete predefinido que vender. Trabajamos desde la necesidad operativa, con las personas más cercanas a ella.", "There is no predefined package to sell. We work from the operational need, with the people closest to it.")}</p>
+      </div>
+      <ol>{(es ? ["Descubrir", "Diseñar", "Construir", "Integrar", "Mejorar"] : ["Discover", "Design", "Build", "Integrate", "Improve"]).map((item, i) => <li key={item}><span>0{i + 1}</span><h3>{item}</h3><i>{i === 4 ? "↗" : "→"}</i></li>)}</ol></section>
 
     <section className="tech section-wrap">
       <div className="tech-visual">
