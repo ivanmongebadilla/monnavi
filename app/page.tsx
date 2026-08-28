@@ -145,7 +145,12 @@ export default function Home() {
           <br />
           <i>{t("avance.", "work move.")}</i>
         </h1>
-        <div className="hero-bottom reveal"><p>{t("MONNAVI convierte los retos operativos en sistemas claros, conectados y hechos para el ritmo de tu empresa.", "MONNAVI turns operational challenges into systems that are clear, connected, and built for the way your business moves.")}</p><div className="hero-actions"><a href="#contact" className="button button-light">{t("Inicia una conversación", "Start a conversation")} <Arrow /></a><a href="#solutions" className="text-link">{t("Explora nuestro trabajo", "Explore our work")} <Arrow /></a></div></div>
+        <div className="hero-bottom reveal"><p>{t("MONNAVI convierte los retos operativos en sistemas claros, conectados y hechos para el ritmo de tu empresa.", "MONNAVI turns operational challenges into systems that are clear, connected, and built for the way your business moves.")}</p>
+          <div className="hero-actions">
+            <a href="#contact" className="button button-light">{t("Inicia una conversación", "Start a conversation")} <Arrow /></a>
+            {/* <a href="#solutions" className="text-link">{t("Explora nuestro trabajo", "Explore our work")} <Arrow /></a> */}
+          </div>
+        </div>
       </div>
       <div className="hero-marker"><span>{t("Explora hacia abajo", "Scroll to explore")}</span><b/></div>
       <div className="hero-signal" aria-label="Live systems illustration"><span className="signal-label">SYSTEMS / 01</span><span className="signal-num">01</span><span className="signal-line"/><span className="signal-node"/></div>
@@ -159,7 +164,24 @@ export default function Home() {
 
     <section className="process section-wrap"><p className="section-kicker">04 / {t("CÓMO TRABAJAMOS", "HOW WE WORK")}</p><div className="process-head"><h2>{t("Empezamos por el", "Start with the")}<br/><em>{t("problema.", "problem.")}</em></h2><p>{t("No hay un paquete predefinido que vender. Trabajamos desde la necesidad operativa, con las personas más cercanas a ella.", "There is no predefined package to sell. We work from the operational need, with the people closest to it.")}</p></div><ol>{(es ? ["Descubrir", "Diseñar", "Construir", "Integrar", "Mejorar"] : ["Discover", "Design", "Build", "Integrate", "Improve"]).map((item, i) => <li key={item}><span>0{i + 1}</span><h3>{item}</h3><i>{i === 4 ? "↗" : "→"}</i></li>)}</ol></section>
 
-    <section className="tech section-wrap"><div className="tech-visual"><div className="tech-ring ring-a"/><div className="tech-ring ring-b"/><div className="tech-core">M</div><span className="tag tag-one">IA</span><span className="tag tag-two">DATA</span><span className="tag tag-three">CLOUD</span><span className="tag tag-four">SENSORES</span></div><div className="tech-copy"><p className="section-kicker">05 / {t("TECNOLOGÍA", "TECHNOLOGY")}</p><h2>{t("Capacidad profunda.", "Deep capability.")}<br/><em>{t("Aplicada con calma.", "Quietly applied.")}</em></h2><p>{t("IA, APIs, nube, bases de datos, web, móvil, sensores, automatización y visión computacional son medios para un fin: una operación más capaz.", "AI, APIs, cloud, databases, web, mobile, sensors, automation, and computer vision are means to an end: a more capable operation.")}</p><a className="text-link" href="#contact">{t("Hablemos de tu reto", "Talk through your challenge")} <Arrow /></a></div></section>
+    <section className="tech section-wrap">
+      <div className="tech-visual">
+        {/* <div className="tech-ring ring-a"/>
+        <div className="tech-ring ring-b"/>
+        <div className="tech-core">M</div>
+        <span className="tag tag-one">IA</span>
+        <span className="tag tag-two">DATA</span>
+        <span className="tag tag-three">CLOUD</span>
+        <span className="tag tag-four">SENSORES</span> */}
+        <img src="/monnavi-tech.png" alt="MONNAVI technology ecosystem" />
+      </div>
+      <div className="tech-copy">
+        <p className="section-kicker">05 / {t("TECNOLOGÍA", "TECHNOLOGY")}</p>
+        <h2>{t("Capacidad profunda.", "Deep capability.")}<br/><em>{t("Aplicada con calma.", "Quietly applied.")}</em></h2>
+        <p>{t("IA, APIs, nube, bases de datos, web, móvil, sensores, automatización y visión computacional son medios para un fin: una operación más capaz.", "AI, APIs, cloud, databases, web, mobile, sensors, automation, and computer vision are means to an end: a more capable operation.")}</p>
+        <a className="text-link" href="#contact">{t("Hablemos de tu reto", "Talk through your challenge")} <Arrow /></a>
+      </div>
+    </section>
 
     <section className="projects section-wrap"><div className="section-heading"><p className="section-kicker">06 / {t("PROYECTOS CONCEPTUALES", "CONCEPT WORK")}</p><h2>{t("Ideas hechas", "Ideas made")}<br/><em>{t("concretas.", "concrete.")}</em></h2><p>{t("Ejemplos de los sistemas que MONNAVI puede diseñar y entregar. Son conceptos, no proyectos de clientes.", "Examples of the kinds of systems MONNAVI can design and deliver. These are concept projects, not client claims.")}</p></div><div className="project-grid">{localProjects.map(([title, text, type], i) => <article key={title} className={`project project-${i + 1}`}><div className="project-art"><span>{i === 0 ? "◌" : i === 1 ? "✦" : "▦"}</span></div><div className="project-info"><small>{type}</small><h3>{title}</h3><p>{text}</p><a href="#contact">{t("Explorar concepto", "Explore concept")} <Arrow /></a></div></article>)}</div></section>
 
